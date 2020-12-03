@@ -6,93 +6,91 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-
-
 @Entity
 @Table(name = "empresa")
-public class Empresa implements Serializable{
-        private static final long serialVersionUID = 3960436649365666213L;
+public class Empresa implements Serializable {
+    private static final long serialVersionUID = 3960436649365666213L;
 
-        private Long id;
-        private String razaoSocial;
-        private String cnpj;
-        private Date dataCriacao;
-        private Date dataAtualizacao;
-        private List<Funcionario> funcionarios;
+    private Long id;
+    private String razaoSocial;
+    private String cnpj;
+    private Date dataCriacao;
+    private Date dataAtualizacao;
+    private List<Funcionario> funcionarios;
 
-        public Empresa(){       
-        }
+    public Empresa() {
+    }
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        public Long getId() {
-            return id;
-        }
-        
-        public void setIdLong(Long id){
-            this.id = id;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
 
-        @Column(name = "razao_social",nullable = false)
-        public String getRazaoSocial(){
-            return razaoSocial;
-        }
+    public void setIdLong(Long id) {
+        this.id = id;
+    }
 
-        public void setRazaoSocial(String razaoSocial){
-            this.razaoSocial = razaoSocial;
-        }
+    @Column(name = "razao_social", nullable = false)
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
 
-        @Column(name = "cnpj",nullable = false)
-        public String getCnpj(){
-            return cnpj;
-        }
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
 
-        public void setCnpj(String cnpj){
-            this.cnpj = cnpj;
-        }
+    @Column(name = "cnpj", nullable = false)
+    public String getCnpj() {
+        return cnpj;
+    }
 
-        @Column(name = "data_criacao",nullable=false)
-        public Date getDataCriacao(){
-            return dataCriacao;
-        }
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
 
-        public void setDataCriacao(Date dataCriacao){
-            this.dataCriacao = dataCriacao;
-        }
+    @Column(name = "data_criacao", nullable = false)
+    public Date getDataCriacao() {
+        return dataCriacao;
+    }
 
-        @Column(name = "data_atualizacao",nullable = false)
-        public Date getDataAtualizacao(){
-            return dataAtualizacao;
-        }
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
 
-        public void setDataAtualizacao(Date dataAtualizacao){
-            this.dataAtualizacao = dataAtualizacao;
-        }
+    @Column(name = "data_atualizacao", nullable = false)
+    public Date getDataAtualizacao() {
+        return dataAtualizacao;
+    }
 
-        @OneToMany(mappedBy = "empresa",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-        public List<Funcionario> getFuncionarios(){
-            return funcionarios;
-        }
+    public void setDataAtualizacao(Date dataAtualizacao) {
+        this.dataAtualizacao = dataAtualizacao;
+    }
 
-        public void setFuncionarios(List<Funcionario> funcionarios){
-            this.funcionarios = funcionarios;
-        }
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
 
-        @PreUpdate
-        public void preUpdate(){
-            dataAtualizacao = new Date();
-        }
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
 
-        @PrePersist
-        public void PrePersist(){
-            final Date atual = new Date();
-            dataCriacao = atual;
-            dataAtualizacao = atual;
-        }
+    @PreUpdate
+    public void preUpdate() {
+        dataAtualizacao = new Date();
+    }
 
-        @Override
-        public String toString(){
-            return "Empresa [id="+id+", razaoSocial="+razaoSocial+", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
-                    + ", dataAtualizacao="+dataAtualizacao+"]";
-        }
+    @PrePersist
+    public void PrePersist() {
+        final Date atual = new Date();
+        dataCriacao = atual;
+        dataAtualizacao = atual;
+    }
+
+    @Override
+    public String toString() {
+        return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+                + ", dataAtualizacao=" + dataAtualizacao + "]";
+    }
 }
