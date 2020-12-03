@@ -1,3 +1,4 @@
+
 package com.kazale.pontointeligente;
 
 import org.springframework.boot.SpringApplication;
