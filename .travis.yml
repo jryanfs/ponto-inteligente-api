@@ -3,6 +3,10 @@ sudo: false
 dist: trusty
 jdk:
   - openjdk11
+script:
+  - java --version
+  - ./mvnw clean install
+  - ./mvnw test
 install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
