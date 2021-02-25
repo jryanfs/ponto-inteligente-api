@@ -3,5 +3,9 @@ sudo: true
 dist: trusty
 jdk:
   - openjdk11
+install:
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+- mvn test
 before_install:
   - chmod +x mvnw
